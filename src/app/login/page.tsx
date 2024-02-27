@@ -46,6 +46,15 @@ export default function Login() {
             </button>
           </div>
         </form>
+        <div className="h-[0.5px] w-auto bg-black mt-3 mb-3"></div>
+        <div>
+          <h3 className="text-gray-400 text-center">
+            If you're admin{" "}
+            <a href="/adminlogin">
+              <span className="text-blue-400">login here</span>
+            </a>
+          </h3>
+        </div>
       </div>
     </main>
   );

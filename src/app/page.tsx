@@ -1,5 +1,3 @@
-import Image from "next/image";
-import NavBar from "./(components)/navbar";
 import LandingPage from "./(components)/landingpage";
 
 export default function Home() {
