@@ -1,3 +1,4 @@
+import { InfiniteMovingCards } from "@/components/ui/movingcard";
 import LandingPage from "./(components)/landingpage";
 
 export default function Home() {

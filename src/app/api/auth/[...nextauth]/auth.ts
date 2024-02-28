@@ -39,14 +39,17 @@ export const authOptions: NextAuthOptions = {
         password: {},
       },
       async authorize(credentials, req) {
-        const { name, email, password } = credentials as {
+        const { name, email, password, flag } = credentials as {
           name: string;
           email: string;
           password: string;
+          flag: number;
         };
         const admin = { id: "1", name: "Admin", password: "admin@123" };
-        if (name == admin.name && password == admin.password) {
-          return admin;
+        if (flag == 3) {
+          if (name == admin.name && password == admin.password) {
+            return admin;
+          }
         }
         console.log(name, email, password);
         console.log(credentials);

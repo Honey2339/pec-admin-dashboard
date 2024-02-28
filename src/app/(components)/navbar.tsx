@@ -13,16 +13,26 @@ import { Button } from "@/components/ui/button";
 export default function navbar() {
   const { data: session } = useSession();
   return (
-    <main className="bg-yellow-400 p-2 items-center flex justify-between">
-      <div className="font-bold flex items-center space-x-5">
-        <Image
-          src="/logo.png"
-          height={50}
-          width={60}
-          alt="logo"
-          className="ml-10"
-        />
-        <h1>Industry Portal</h1>
+    <main
+      className=" p-2 items-center flex justify-between text-white shadow-2xl"
+      style={{ backgroundColor: "#0c4182" }}
+    >
+      <div className="flex items-center space-x-10">
+        <div className="flex items-center space-x-5">
+          <Image
+            src="/logo.png"
+            height={50}
+            width={60}
+            alt="logo"
+            className="ml-10"
+          />
+          <h1 className="font-bold">Industry Portal</h1>
+        </div>
+        <div>
+          <a href="/home">
+            <h1 className="">Home</h1>
+          </a>
+        </div>
       </div>
       {session?.user.name ? (
         <div className="flex gap-10 mr-10">

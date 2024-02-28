@@ -30,21 +30,33 @@ export default function Post() {
   const [showWorkshop, setShowWorkshop] = useState(false);
   const [showRecruitment, setShowRecruitment] = useState(false);
 
+  const [initData, setInitData] = useState({});
+  const [data, setData] = useState({});
+
+  const handleSubmit = (e: any) => {
+    const sendData = async () => {
+      await fetch("/api/sendPost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ initData, data }),
+      }).then((data) => {
+        console.log(data);
+      });
+    };
+    sendData();
+  };
+
   const handleValue = (value: any) => {
+    setData({});
     setShowGuest(value === "guest");
     setShowIV(value === "iv");
     setShowWorkshop(value === "workshop");
     setShowRecruitment(value === "recruitment");
   };
-  const styleForRecruitment: CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-  };
   return (
-    <main
-      className="flex space-x-10 items-center mb-10"
-      style={showRecruitment ? {} : styleForRecruitment}
-    >
+    <main className="flex space-x-10 items-center mb-10 justify-center">
       <Card className="w-[350px]">
         <CardHeader>
           <CardTitle>Enter The Details</CardTitle>
@@ -55,11 +67,29 @@ export default function Post() {
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="name">Company Name</Label>
-                <Input id="name" placeholder="Name of your name" />
+                <Input
+                  id="name"
+                  placeholder="Name of your name"
+                  onChange={(e) =>
+                    setInitData((values) => ({
+                      ...values,
+                      cname: e.target.value,
+                    }))
+                  }
+                />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="name">Company Address</Label>
-                <Input id="name" placeholder="Address of company" />
+                <Label htmlFor="address">Company Address</Label>
+                <Input
+                  id="address"
+                  placeholder="Address of company"
+                  onChange={(e) =>
+                    setInitData((values) => ({
+                      ...values,
+                      address: e.target.value,
+                    }))
+                  }
+                />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="framework">Purposes</Label>
@@ -76,18 +106,18 @@ export default function Post() {
                   </SelectContent>
                 </Select>
               </div>
-              {showGuest ? <GuestCard /> : null}
-              {showIV ? <IndustryVisitForm /> : null}
-              {showWorkshop ? <WorkshopForm /> : null}
+              {showGuest ? <GuestCard setData={setData} /> : null}
+              {showIV ? <IndustryVisitForm setData={setData} /> : null}
+              {showWorkshop ? <WorkshopForm setData={setData} /> : null}
+              {showRecruitment ? <RecruitmentForm setData={setData} /> : null}
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex justify-between">
           <Button variant="outline">Cancel</Button>
-          <Button>Deploy</Button>
+          <Button onClick={handleSubmit}>Send</Button>
         </CardFooter>
       </Card>
-      {showRecruitment ? <RecruitmentForm /> : null}
     </main>
   );
 }

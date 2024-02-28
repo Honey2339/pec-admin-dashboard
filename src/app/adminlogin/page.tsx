@@ -12,6 +12,7 @@ export default function AdminLogin() {
     await signIn("credentials", {
       name: data.name,
       password: data.password,
+      flag: 3,
       callbackUrl: "/dashboard",
     });
   };
