@@ -42,118 +42,116 @@ export default function Register() {
     }
   };
   return (
-    <main className="flex items-center justify-center h-screen">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h2 className="text-2xl font-bold mb-8">Register</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="name"
-              >
-                Name
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="name"
-                type="text"
-                placeholder="Enter your name"
-                name="name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData((values) => ({ ...values, name: e.target.value }))
-                }
-              />
+    <div className="flex min-h-screen">
+      <div className="flex flex-row w-full">
+        <div className="hidden lg:flex flex-col justify-between bg-[#e7dc46] lg:p-8 xl:p-12 lg:max-w-sm xl:max-w-lg">
+          <div className="flex items-center justify-start space-x-3">
+            <span className="bg-black rounded-full w-8 h-8"></span>
+          </div>
+          <div className="space-y-5">
+            <h1 className="lg:text-3xl xl:text-5xl xl:leading-snug font-extrabold">
+              Enter your account and join the ongoing events
+            </h1>
+          </div>
+          <p className="font-medium">© Panimalar Engineering College</p>
+        </div>
+
+        <div className="flex flex-1 flex-col items-center justify-center px-10 relative">
+          <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
+            <div className="flex flex-col space-y-2 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Register Today!
+              </h2>
+              <p className="text-md md:text-xl">
+                Get started by filling this form right now
+              </p>
             </div>
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              type="email"
-              placeholder="Enter your email"
-              name="email"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData((values) => ({ ...values, email: e.target.value }))
-              }
-            />
+            <div className="flex flex-col max-w-md space-y-5">
+              <form
+                className="flex flex-col max-w-md space-y-5"
+                onSubmit={handleSubmit}
+              >
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData((values) => ({
+                      ...values,
+                      name: e.target.value,
+                    }))
+                  }
+                  className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={(e) =>
+                    setFormData((values) => ({
+                      ...values,
+                      password: e.target.value,
+                    }))
+                  }
+                  className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                />
+                <input
+                  type="text"
+                  placeholder="Panimalar@gmail.com"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData((values) => ({
+                      ...values,
+                      email: e.target.value,
+                    }))
+                  }
+                  className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                />
+                <input
+                  type="text"
+                  placeholder="Register Number"
+                  value={formData.regNo}
+                  onChange={(e) =>
+                    setFormData((values) => ({
+                      ...values,
+                      regNo: e.target.value,
+                    }))
+                  }
+                  className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                />
+                <input
+                  type="text"
+                  placeholder="Roll Number"
+                  value={formData.rollNo}
+                  onChange={(e) =>
+                    setFormData((values) => ({
+                      ...values,
+                      rollNo: e.target.value,
+                    }))
+                  }
+                  className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+                />
+                <button
+                  type="submit"
+                  className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white"
+                >
+                  Submit
+                </button>
+              </form>
+              <div className="flex justify-center items-center">
+                <span className="w-full border border-black"></span>
+                <span className="px-4">Or</span>
+                <span className="w-full border border-black"></span>
+              </div>
+              <button className="flex items-center hover:bg-black hover:border-white hover:text-white justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative">
+                <a href="/adminlogin">
+                  <span>Admin Login</span>
+                </a>
+              </button>
+            </div>
           </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="regNo"
-            >
-              Reg No
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="register"
-              type="text"
-              placeholder="Enter your Register Number"
-              name="regNo"
-              value={formData.regNo}
-              onChange={(e) =>
-                setFormData((values) => ({ ...values, regNo: e.target.value }))
-              }
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="rollNo"
-            >
-              Roll No
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="rollno"
-              type="text"
-              placeholder="Enter your Roll Number"
-              name="rollNo"
-              value={formData.rollNo}
-              onChange={(e) =>
-                setFormData((values) => ({ ...values, rollNo: e.target.value }))
-              }
-            />
-          </div>
-          <div className="mb-6">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              name="password"
-              value={formData.password}
-              onChange={(e) =>
-                setFormData((values) => ({
-                  ...values,
-                  password: e.target.value,
-                }))
-              }
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
-              Sign In
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }

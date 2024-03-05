@@ -4,10 +4,31 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { InfiniteMovingCards } from "@/components/ui/movingcard";
 import { ContainerScroll } from "@/components/ui/scroll-card";
+import {
+  TypewriterEffect,
+  TypewriterEffectSmooth,
+} from "@/components/ui/typewriter";
+import SectionTwo from "./sectiontwo";
+import Footer from "./footer";
 
 const grok = Space_Grotesk({ weight: ["500"], subsets: ["latin"] });
 
 export default function landingpage() {
+  const words = [
+    {
+      text: "Post",
+    },
+    {
+      text: "latest",
+    },
+    {
+      text: "updates",
+    },
+    {
+      text: "here!",
+      className: "text-white dark:text-white",
+    },
+  ];
   const items = [
     {
       quote: "Hello",
@@ -108,7 +129,15 @@ export default function landingpage() {
         <ContainerScroll users={users} titleComponent />
       </div>
       {/* <InfiniteMovingCards items={items} pauseOnHover={false} speed="fast" /> */}
-      <div></div>
+      <div className="bg-blue-500 p-5 w-screen flex flex-col justify-center items-center">
+        {/* <TypewriterEffectSmooth words={words} /> */}
+      </div>
+      <div>
+        <SectionTwo />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </main>
   );
 }

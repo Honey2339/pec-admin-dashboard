@@ -30,7 +30,7 @@ export default function Post() {
   const [showWorkshop, setShowWorkshop] = useState(false);
   const [showRecruitment, setShowRecruitment] = useState(false);
 
-  const [initData, setInitData] = useState({});
+  const [initData, setInitData] = useState({ cname: "", address: "" });
   const [data, setData] = useState({});
 
   const handleSubmit = (e: any) => {
@@ -42,6 +42,10 @@ export default function Post() {
         },
         body: JSON.stringify({ initData, data }),
       }).then((data) => {
+        setInitData({ cname: "", address: "" });
+        window.location.reload();
+        setData({});
+        console.log("Data sent");
         console.log(data);
       });
     };
@@ -70,6 +74,7 @@ export default function Post() {
                 <Input
                   id="name"
                   placeholder="Name of your name"
+                  value={initData.cname}
                   onChange={(e) =>
                     setInitData((values) => ({
                       ...values,
@@ -83,6 +88,7 @@ export default function Post() {
                 <Input
                   id="address"
                   placeholder="Address of company"
+                  value={initData.address}
                   onChange={(e) =>
                     setInitData((values) => ({
                       ...values,

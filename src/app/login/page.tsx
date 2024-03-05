@@ -5,64 +5,56 @@ import { useState } from "react";
 export default function Login() {
   const [email, setEmail] = useState();
   return (
-    <main className="flex items-center justify-center h-screen">
-      <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950">
-        <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
-          <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
-            Welcome Back!
-          </h1>
-          <form action="#">
-            <div className="mb-4">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="your@email.com"
-                required
-              />
+    <div className="flex min-h-screen">
+      <div className="flex flex-row w-full">
+        <div className="hidden lg:flex flex-col justify-between bg-[#4682d1] lg:p-8 xl:p-12 lg:max-w-sm xl:max-w-lg">
+          <div className="flex items-center justify-start space-x-3">
+            <span className="bg-black rounded-full w-8 h-8"></span>
+          </div>
+          <div className="space-y-5">
+            <h1 className="lg:text-3xl xl:text-5xl xl:leading-snug font-extrabold">
+              Enter your account and join the ongoing events
+            </h1>
+          </div>
+          <p className="font-medium">© Panimalar Engineering College</p>
+        </div>
+
+        <div className="flex flex-1 flex-col items-center justify-center px-10 relative">
+          <div className="flex flex-1 flex-col  justify-center space-y-5 max-w-md">
+            <div className="flex flex-col space-y-2 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Log in to account
+              </h2>
+              <p className="text-md md:text-xl">Lets verify yourself!</p>
             </div>
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
-              >
-                Password
-              </label>
+            <div className="flex flex-col max-w-md space-y-5">
+              <input
+                type="text"
+                placeholder="Username"
+                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
+              />
               <input
                 type="password"
-                id="password"
-                className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Enter your password"
-                required
+                placeholder="Password"
+                className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
               />
-              <a
-                href="#"
-                className="text-xs text-gray-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Forgot Password?
-              </a>
+              <button className="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black bg-black text-white">
+                Submit
+              </button>
+              <div className="flex justify-center items-center">
+                <span className="w-full border border-black"></span>
+                <span className="px-4">Or</span>
+                <span className="w-full border border-black"></span>
+              </div>
+              <button className="flex items-center hover:bg-black hover:border-white hover:text-white justify-center flex-none px-3 py-2 md:px-4 md:py-3 border-2 rounded-lg font-medium border-black relative">
+                <a href="/adminlogin">
+                  <span>Admin Login</span>
+                </a>
+              </button>
             </div>
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center"></div>
-              <a
-                href="/register"
-                className="text-xs text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Create Account
-              </a>
-            </div>
-            <button className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              Login
-            </button>
-          </form>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
