@@ -39,9 +39,11 @@ export const authOptions: NextAuthOptions = {
         password: {},
       },
       async authorize(credentials, req) {
-        const { name, email, password, flag } = credentials as {
+        const { id, name, email, password, regNo, flag } = credentials as {
+          id: string;
           name: string;
           email: string;
+          regNo: number;
           password: string;
           flag: number;
         };
@@ -51,8 +53,23 @@ export const authOptions: NextAuthOptions = {
             return admin;
           }
         }
-        console.log(name, email, password);
-        console.log(credentials);
+        //Student Login
+        if (flag == 2) {
+          const findUser = await db.user.findFirst({
+            where: { regno: regNo, password: password },
+            select: { id: true, regno: true, password: true, name: true },
+          });
+          if (findUser) {
+            return {
+              id: findUser.id,
+              name: findUser.name,
+              regNo: findUser.regno,
+              password: findUser.password,
+            };
+          } else {
+            throw new Error("Invalid Credentials");
+          }
+        }
         return null;
       },
     }),

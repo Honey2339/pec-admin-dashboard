@@ -128,12 +128,12 @@ export default function landingpage() {
         </div>
         <ContainerScroll users={users} titleComponent />
       </div>
-      {/* <InfiniteMovingCards items={items} pauseOnHover={false} speed="fast" /> */}
       <div className="bg-blue-500 p-5 w-screen flex flex-col justify-center items-center">
-        {/* <TypewriterEffectSmooth words={words} /> */}
+        <TypewriterEffectSmooth words={words} />
       </div>
       <div>
         <SectionTwo />
+        {/* <InfiniteMovingCards items={items} pauseOnHover={false} speed="fast" /> */}
       </div>
       <div>
         <Footer />

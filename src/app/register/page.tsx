@@ -6,7 +6,7 @@ export default function Register() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    regNo: "",
+    regNo: 0,
     rollNo: "",
     password: "",
   });
@@ -14,8 +14,8 @@ export default function Register() {
   const registerSchema = z.object({
     name: z.string().min(2).max(50),
     email: z.string().email(),
-    regNo: z.string().min(2).max(20),
-    rollNo: z.string().min(2).max(20),
+    regNo: z.number(),
+    rollNo: z.string().min(2).max(20).includes("PEC"),
     password: z.string().min(6),
   });
 
@@ -24,7 +24,15 @@ export default function Register() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     try {
-      registerSchema.parse(formData);
+      const parsedData = registerSchema.parse(formData);
+      const fetchData = async () => {
+        await fetch("/api/registerUser", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(parsedData),
+        }).then((data) => console.log(data));
+      };
+      fetchData();
       console.log("Form is validated");
       setFormErrors({});
     } catch (error) {
@@ -108,13 +116,13 @@ export default function Register() {
                   className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"
                 />
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Register Number"
                   value={formData.regNo}
                   onChange={(e) =>
                     setFormData((values) => ({
                       ...values,
-                      regNo: e.target.value,
+                      regNo: parseInt(e.target.value),
                     }))
                   }
                   className="flex px-3 py-2 md:px-4 md:py-3 border-2 border-black rounded-lg font-medium placeholder:font-normal"

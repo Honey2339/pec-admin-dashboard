@@ -1,12 +1,16 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Inter, Space_Grotesk } from "next/font/google";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FcApproval } from "react-icons/fc";
 
 const grok = Space_Grotesk({ subsets: ["latin"], weight: ["600"] });
 
 export default function SectionTwo() {
+  const router = useRouter();
   return (
     <main className="mt-12">
       <div className="flex flex-col justify-center items-center mb-16">
@@ -40,7 +44,11 @@ export default function SectionTwo() {
             </div>
           </div>
           <div className="mt-10">
-            <Button className="p-7 bg-blue-500 hover:bg-blue-700" size="lg">
+            <Button
+              onClick={() => router.push("/register")}
+              className="p-7 bg-blue-500 hover:bg-blue-700"
+              size="lg"
+            >
               Get Started
             </Button>
           </div>

@@ -42,7 +42,7 @@ export default function NavbarAgain() {
                       <h3 className="text-gray-800 text-sm font-semibold">
                         Logged In As :{" "}
                         <span className="text-gray-800 text-sm font-semibold hover:text-blue-500">
-                          {session.user.name}
+                          {session?.user?.name}
                         </span>
                       </h3>
                     </PopoverTrigger>
